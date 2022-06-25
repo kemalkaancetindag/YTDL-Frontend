@@ -30,6 +30,11 @@ const createTypeButtons = () => {
     document.getElementById('slide-menu').innerHTML = buttons.join('\n')
 }
 
+const download = (value) => {
+    console.log(value)
+
+}
+
 const getVideoData = (value) => {
    
     var loader = `
@@ -39,10 +44,11 @@ const getVideoData = (value) => {
     document.getElementById('dw-section').innerHTML = loader
    
 
-    fetch('https://noembed.com/embed?url=https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+    fetch(`https://noembed.com/embed?url=${value}`)
         .then(res => res.text())
         .then(res => {
             var parsedResponse = JSON.parse(res)
+            console.log(parsedResponse)
             var authorArr = parsedResponse.author_url.split('/')
             var author = authorArr[authorArr.length - 1]
             var videoInfoElement = `
@@ -64,7 +70,7 @@ const getVideoData = (value) => {
                 </div>
             </div>
             <div class="download-button-container">
-               <button>
+               <button onclick="download(this.id)" id="${value}">
                    Download
                </button>
         
