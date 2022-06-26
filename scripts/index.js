@@ -1,3 +1,5 @@
+
+
 const dropMenu = () => {
     var slideMenu = document.getElementById('slide-menu')
 
@@ -8,6 +10,43 @@ const dropMenu = () => {
         slideMenu.classList.replace('slider-off', 'slider-on')
     }
 }
+
+const slideLanguage = () => {
+    var languageList = document.getElementById('language-list')
+    if (languageList.classList.contains('language-list-on')) {
+        languageList.classList.replace('language-list-on', 'language-list-off')
+    }
+    else {
+        languageList.classList.replace('language-list-off', 'language-list-on')
+    }
+
+}
+
+
+const language = (lang) => {
+    fetch("../static/files/language.json")
+.   then(response => response.json())
+    .then(jsondata => {
+        jsondata.infoCards.forEach(block => {
+            document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]][lang]
+           console.log(block[Object.keys(block)[0]][lang])
+        })
+
+        jsondata.steps.forEach(block => {
+            document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]][lang]
+           console.log(block[Object.keys(block)[0]][lang])
+        })
+
+        if(document.querySelectorAll('[translate-id="dw_button"]').length > 0){
+            document.querySelectorAll('[translate-id="dw_button"]')[0].innerText = jsondata.dw_button[lang]
+        }
+
+        
+        document.querySelectorAll('[translate-id="lang_button"]')[0].innerText = jsondata.lang_button[lang]
+        
+    });
+}
+
 
 const setType = (id) => {
     document.getElementById('select-button').innerText = id
@@ -67,6 +106,7 @@ const getVideoData = (value) => {
     `
 
     document.getElementById('dw-section').innerHTML = loader
+    var language = document.getElementById('language').value
    
 
     fetch(`https://noembed.com/embed?url=${value}`)
@@ -95,8 +135,8 @@ const getVideoData = (value) => {
                 </div>
             </div>
             <div class="download-button-container" id="dw-button-container">
-               <button onclick="download(this.id)" id="${value}" dt-title="${parsedResponse.title}">
-                   Download
+               <button onclick="download(this.id)" id="${value}" dt-title="${parsedResponse.title}" translate-id="dw_button">
+                   ${language == 'tr' ? 'İndir' :  'Download'}
                </button>
         
             </div>
@@ -122,5 +162,28 @@ window.onload = function (e) {
 
 
     })
+
+
+    fetch("../static/files/language.json")
+    .   then(response => response.json())
+        .then(jsondata => {
+            jsondata.infoCards.forEach(block => {
+                document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]]["tr"]
+               console.log(block[Object.keys(block)[0]]["tr"])
+            })
+    
+            jsondata.steps.forEach(block => {
+                document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]]["tr"]
+               console.log(block[Object.keys(block)[0]]["tr"])
+            })
+    
+            if(document.querySelectorAll('[translate-id="dw_button"]').length > 0){
+                document.querySelectorAll('[translate-id="dw_button"]')[0].innerText = jsondata.dw_button["tr"]
+            }
+    
+            
+            document.querySelectorAll('[translate-id="lang_button"]')[0].innerText = jsondata.lang_button["tr"]
+            
+        });
 }
 

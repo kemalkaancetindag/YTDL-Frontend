@@ -372,3 +372,78 @@ button.select-button:hover{
     box-shadow: 2px 2px 2px 2px #BDBDBD;
     margin-right: 10px;
 }
+
+
+.language-list-on {   
+    width: 100%;
+    height: 80px;
+    background-color: #fc3f84;
+    display: flex;    
+    align-items: center;   	            
+	height: 100px;    
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+}
+
+.language-list-off {       
+    width: 100%;
+	height: 0px;
+    margin: auto;
+	transition-property: all;
+	transition-duration: .5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.language-list-on ul {
+    list-style: none;
+}
+
+.language-list-on ul li {
+    float: left;
+    margin-left: 20px;    
+}
+
+.language-list-on ul li button{
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: large;   
+        
+}
+
+.language-list-on ul li button:hover{    
+    opacity: 0.8;
+    cursor: pointer;         
+}
+
+
+
+
+.language-list-off ul li button:hover{    
+    opacity: 0.8;
+    cursor: pointer;         
+}
+
+.language-list-off ul {
+    list-style: none;
+}
+
+.language-list-off ul li {
+    float: left;
+    margin-left: 20px;    
+}
+
+.language-list-off ul li button{
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: large;   
+        
+}
+
+.language-list-off ul li button:hover{    
+    opacity: 0.8;
+    cursor: pointer;         
+}
