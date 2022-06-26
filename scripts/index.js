@@ -55,7 +55,7 @@ const setType = (id) => {
 }
 
 const createTypeButtons = () => {
-    const types = ['MP4', 'MP3', 'WEBM', 'M4A']
+    const types = ['MP4', 'MP3', 'WEBM', 'M4A', 'AVI']
     const colors = ['#FF7396', '#F4E06D', '#C499BA', '#2E0249']
     const buttons = []
 
