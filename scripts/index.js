@@ -28,26 +28,25 @@ const slideLanguage = () => {
 
 const language = (lang) => {
     fetch("../static/files/language.json")
-.   then(response => response.json())
-    .then(jsondata => {
-        jsondata.infoCards.forEach(block => {
-            document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]][lang]
-           console.log(block[Object.keys(block)[0]][lang])
-        })
+        .then(response => response.json())
+        .then(jsondata => {
+            jsondata.infoCards.forEach(block => {
+                document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]][lang]
+            })
 
-        jsondata.steps.forEach(block => {
-            document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]][lang]
-           console.log(block[Object.keys(block)[0]][lang])
-        })
+            jsondata.steps.forEach(block => {
+                document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]][lang]
 
-        if(document.querySelectorAll('[translate-id="dw_button"]').length > 0){
-            document.querySelectorAll('[translate-id="dw_button"]')[0].innerText = jsondata.dw_button[lang]
-        }
+            })
 
-        
-        document.querySelectorAll('[translate-id="lang_button"]')[0].innerText = jsondata.lang_button[lang]
-        
-    });
+            if (document.querySelectorAll('[translate-id="dw_button"]').length > 0) {
+                document.querySelectorAll('[translate-id="dw_button"]')[0].innerText = jsondata.dw_button[lang]
+            }
+
+
+            document.querySelectorAll('[translate-id="lang_button"]')[0].innerText = jsondata.lang_button[lang]
+
+        });
 }
 
 
@@ -56,7 +55,7 @@ const setType = (id) => {
 }
 
 const createTypeButtons = () => {
-    const types = ['MP4', 'MP3','WEBM','M4A']
+    const types = ['MP4', 'MP3', 'WEBM', 'M4A']
     const colors = ['#FF7396', '#F4E06D', '#C499BA', '#2E0249']
     const buttons = []
 
@@ -73,6 +72,7 @@ const createTypeButtons = () => {
 }
 
 const download = (value) => {
+    console.log(value.length)
     var loader = `
     <div class="loader"></div>
     `
@@ -82,35 +82,37 @@ const download = (value) => {
 
     var type = document.getElementById('select-button').innerText
     fetch(`${API_URL}/create-content?url=${value}&type=${type}&videoName=${title}`)
-    .then(res => res.json())
-    .then(res => {
+        .then(res => res.json())
+        .then(res => {
 
-        if(!res.error){
-            dwButtonContainer.innerHTML = `
-            <button onclick="download(this.id)" id="${value}" dt-title="${title}">
-                Download
-            </button>
-            `
-            window.open(`${API_URL}/download?path=${res.data}`, '_blank')
+            if (!res.error) {
+                dwButtonContainer.innerHTML = `
+        <button onclick="download(this.id)" id="${value}" dt-title="${title}">
+            Download
+        </button>
+        `
+                window.open(`${API_URL}/download?path=${res.data}`, '_blank')
 
-        }
-    })
-    .catch(err => console.log(err))    
-   
 
-   
+
+            }
+        })
+        .catch(err => console.log(err))
+
+
+
 
 }
 
 const getVideoData = (value) => {
-   
+
     var loader = `
     <div class="loader"></div>
     `
 
     document.getElementById('dw-section').innerHTML = loader
     var language = document.getElementById('language').value
-   
+
 
     fetch(`https://noembed.com/embed?url=${value}`)
         .then(res => res.text())
@@ -139,7 +141,7 @@ const getVideoData = (value) => {
             </div>
             <div class="download-button-container" id="dw-button-container">
                <button onclick="download(this.id)" id="${value}" dt-title="${parsedResponse.title}" translate-id="dw_button">
-                   ${language == 'tr' ? 'İndir' :  'Download'}
+                   ${language == 'tr' ? 'İndir' : 'Download'}
                </button>
         
             </div>
@@ -150,43 +152,52 @@ const getVideoData = (value) => {
 
         })
         .catch(err => {
+            document.getElementById('dw-section').innerHTML = '<span>Video Not Found</span>'
             console.log(err)
         })
 
 
 }
 
+window.onbeforeunload = function (e) {
+    console.log('sa')
+}
+
 window.onload = function (e) {
     createTypeButtons()
 
     document.getElementById('url').addEventListener('change', (e) => {
-        console.log(e.target.value)
-        getVideoData(e.target.value)
+
+        if (e.target.value.length !== 0) {
+            getVideoData(e.target.value)
+        }
+
+
 
 
     })
 
 
     fetch("../static/files/language.json")
-    .   then(response => response.json())
+        .then(response => response.json())
         .then(jsondata => {
             jsondata.infoCards.forEach(block => {
                 document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]]["tr"]
-               console.log(block[Object.keys(block)[0]]["tr"])
+
             })
-    
+
             jsondata.steps.forEach(block => {
                 document.getElementById(Object.keys(block)[0]).innerText = block[Object.keys(block)[0]]["tr"]
-               console.log(block[Object.keys(block)[0]]["tr"])
+
             })
-    
-            if(document.querySelectorAll('[translate-id="dw_button"]').length > 0){
+
+            if (document.querySelectorAll('[translate-id="dw_button"]').length > 0) {
                 document.querySelectorAll('[translate-id="dw_button"]')[0].innerText = jsondata.dw_button["tr"]
             }
-    
-            
+
+
             document.querySelectorAll('[translate-id="lang_button"]')[0].innerText = jsondata.lang_button["tr"]
-            
+
         });
 }
 
