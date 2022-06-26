@@ -14,7 +14,7 @@ const setType = (id) => {
 }
 
 const createTypeButtons = () => {
-    const types = ['MP4', 'MP3']
+    const types = ['MP4', 'MP3','WEBM','M4A']
     const colors = ['#FF7396', '#F4E06D', '#C499BA', '#2E0249']
     const buttons = []
 
@@ -31,7 +31,32 @@ const createTypeButtons = () => {
 }
 
 const download = (value) => {
-    console.log(value)
+    var loader = `
+    <div class="loader"></div>
+    `
+    var dwButtonContainer = document.getElementById('dw-button-container')
+    var title = document.getElementById(value).getAttribute('dt-title')
+    dwButtonContainer.innerHTML = loader
+
+    var type = document.getElementById('select-button').innerText
+    fetch(`http://localhost:3000/create-content?url=${value}&type=${type}&videoName=${title}`)
+    .then(res => res.json())
+    .then(res => {
+
+        if(!res.error){
+            dwButtonContainer.innerHTML = `
+            <button onclick="download(this.id)" id="${value}" dt-title="${title}">
+                Download
+            </button>
+            `
+            window.open(`http://localhost:3000/download?path=${res.data}`, '_blank')
+
+        }
+    })
+    .catch(err => console.log(err))    
+   
+
+   
 
 }
 
@@ -69,8 +94,8 @@ const getVideoData = (value) => {
                     
                 </div>
             </div>
-            <div class="download-button-container">
-               <button onclick="download(this.id)" id="${value}">
+            <div class="download-button-container" id="dw-button-container">
+               <button onclick="download(this.id)" id="${value}" dt-title="${parsedResponse.title}">
                    Download
                </button>
         
