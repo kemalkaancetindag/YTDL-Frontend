@@ -317,9 +317,20 @@ button.select-button:hover{
 .info-texts {
     width: 100%;
     height: auto;
+   
 
 
 }
+
+.uncopyable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 
 .info-texts-col {
     height: 100%;
