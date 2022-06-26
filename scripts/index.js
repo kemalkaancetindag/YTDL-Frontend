@@ -1,3 +1,6 @@
+const API_URL = "http://localhost:8080"
+
+
 
 
 const dropMenu = () => {
@@ -78,7 +81,7 @@ const download = (value) => {
     dwButtonContainer.innerHTML = loader
 
     var type = document.getElementById('select-button').innerText
-    fetch(`http://localhost:3000/create-content?url=${value}&type=${type}&videoName=${title}`)
+    fetch(`${API_URL}/create-content?url=${value}&type=${type}&videoName=${title}`)
     .then(res => res.json())
     .then(res => {
 
@@ -88,7 +91,7 @@ const download = (value) => {
                 Download
             </button>
             `
-            window.open(`http://localhost:3000/download?path=${res.data}`, '_blank')
+            window.open(`${API_URL}/download?path=${res.data}`, '_blank')
 
         }
     })

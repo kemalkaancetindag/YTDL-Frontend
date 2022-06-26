@@ -1,0 +1,13 @@
+version: '3'
+services:
+  ytdl_backend:
+    container_name: ytdl_backend
+    image: ytdl_backend   
+    ports:
+      - 8080:8080
+
+  ytdl_frontend:
+    container_name: ytdl_frontend
+    image: ytdl_frontend
+    ports:
+      - 80:80
