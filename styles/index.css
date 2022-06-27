@@ -466,3 +466,57 @@ button.select-button:hover{
     cursor: pointer;         
 }
 
+
+@media only screen and (max-width: 600px) {
+    .blue-fade{
+        font-size: 12px;
+    }
+    .logo {
+        height: 100px !important;
+        width: 100px !important;
+    }
+    .navbar-logo{
+        justify-content: start;
+        margin-left: 0px;        
+    }
+    .language {
+        width: 50px  !important;
+        margin-right: 10px !important;
+    }
+    .input-group {
+        width: 100% !important;
+    }
+    .download-container {
+        margin-top: 20px;
+        flex-direction: column;
+        width: 100%;
+        
+        justify-content: center;
+    }
+    .video-info-container {
+        width: 100%;
+    }
+    .download-button-container{
+        margin-top: 20px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .info-header{
+        font-size: 20px !important;
+    }
+    .info-blocks {
+        margin-top: 20px;
+        flex-wrap: wrap;
+        height: 300vh;
+    }
+    .information {
+        width: 100%;
+    }
+    .information-flex-end {
+        width: 100%;
+    }
+    .flex-end-wrapper {
+        width: 100%;
+    }
+}
+
