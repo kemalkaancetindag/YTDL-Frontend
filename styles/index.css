@@ -17,11 +17,11 @@ body{
 
 .navbar-logo {
     margin-left: 50px;
-    width: 300px;
-    height: 80px;
+    width: 200px;
+    height: 200px;
     display: flex;
     align-items: center;
-    justify-content: center;   
+    justify-content: start;   
 }
 
 .navbar-logo .heading{
@@ -29,8 +29,8 @@ body{
     margin-left: 15px;
 }
 .navbar-logo .logo{
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 }
 
 nav .language {
@@ -47,7 +47,7 @@ nav .language button{
     border-radius: 5px;
     width: 100%;
     height: 40px;
-    background-color:  #fc3f84;
+    background-color:  #5EBB46;
     color: white;
     font-size: 15px;
 }
@@ -57,7 +57,7 @@ nav .language button:hover{
     border-radius: 5px;
     width: 100%;
     height: 40px;
-    background-color:  #fc3f84;
+    background-color:  #5EBB46;
     opacity: 0.9;
     cursor: pointer;
     color: white;
@@ -97,7 +97,7 @@ section .input-group {
 button.select-button{
     border-left: none;
     width: 10%;
-    background-color:  #fc3f84;
+    background-color:  #5EBB46;
     border: none;
     border-radius: 0px 5px 5px 0px;
     color: white;
@@ -106,7 +106,7 @@ button.select-button{
 button.select-button:hover{
     border-left: none;
     width: 10%;
-    background-color:  #fc3f84;
+    background-color:  #5EBB46;
     opacity: 0.8;
     cursor: pointer;
     border: none;
@@ -139,6 +139,7 @@ button.select-button:hover{
 }
 
 .slider-button {
+    display: inline-block;
     cursor: pointer;
     margin-top: 5px;
     border: none;
@@ -147,6 +148,12 @@ button.select-button:hover{
     border-radius: 5px;    
     width: 100px;
     height: 90%;
+}
+
+.button-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .slider-button:hover {
@@ -173,7 +180,7 @@ button.select-button:hover{
     font-size: 40px;
     font-family: Helvetica,Arial,sans-serif;
     font-weight: 100; 
-    background: -webkit-linear-gradient(#FF73A6, #2E0249);
+    background: -webkit-linear-gradient(#5EBB46, #2E0249);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -209,7 +216,7 @@ button.select-button:hover{
     width: 150px;
     height: 150px;
     border-radius: 5px;
-    background-color: royalblue;
+    background-color: #5EBB46;
 }
 
 .video-info-container .video-info {
@@ -234,7 +241,7 @@ button.select-button:hover{
     border: none;
     border-radius: 5px;
     color: white;
-    background-color: #fc3f84;
+    background-color: #5EBB46;
     font-size: 20px
 }
 
@@ -271,7 +278,7 @@ button.select-button:hover{
 .loader {
     border: 8px solid #f3f3f3;
     border-radius: 50%;
-    border-top: 8px solid #fc3f84;
+    border-top: 8px solid #5EBB46;
     width: 60px;
     height: 60px;
     -webkit-animation: spin 2s linear infinite; /* Safari */
@@ -388,7 +395,7 @@ button.select-button:hover{
 .language-list-on {   
     width: 100%;
     height: 80px;
-    background-color: #fc3f84;
+    background-color: #5EBB46;
     display: flex;    
     align-items: center;   	            
 	height: 100px;    
@@ -458,3 +465,4 @@ button.select-button:hover{
     opacity: 0.8;
     cursor: pointer;         
 }
+

@@ -55,16 +55,16 @@ const setType = (id) => {
 }
 
 const createTypeButtons = () => {
-    const types = ['MP4', 'MP3', 'WEBM', 'M4A', 'AVI']
+    const types = ['MP4', 'MP3', 'WEBM', 'M4A', 'AVI','3GP']
     const colors = ['#FF7396', '#F4E06D', '#C499BA', '#2E0249']
     const buttons = []
 
 
     types.forEach((type) => {
         buttons.push(`
-        <button class="slider-button" style="background-color:${colors[Math.floor(Math.random() * colors.length)]}" onclick="setType(this.id)" id="${type}">
-            ${type}
-        </button>
+        <div class="slider-button ${type}-logo"  onclick="setType(this.id)" id="${type}">
+            <img src="./static/images/${type}_youtube.png" class="button-logo"/>            
+        </div>
         `)
     })
 
