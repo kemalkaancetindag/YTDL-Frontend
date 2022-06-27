@@ -89,7 +89,7 @@ section .input-group {
 }
 
 .url-input {
-    width: 40%;
+    width: 60%;
     height: 30px;
     border-radius: 5px 0px 0px 5px;
     border: 1.2px solid #BDBDBD;
@@ -119,7 +119,7 @@ button.select-button:hover{
 .slider-on {      
 	overflow-x: scroll;    
     white-space: nowrap;
-    width: 50%;
+    width: 70%;
 	height: 100px;
     margin: 20px auto;
 	transition-property: all;
