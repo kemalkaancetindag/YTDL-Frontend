@@ -55,8 +55,8 @@ const setType = (id) => {
 }
 
 const createTypeButtons = () => {
-    const types = ['MP4', 'MP3', 'WEBM', 'M4A', 'AVI','3GP']
-    const colors = ['#FF7396', '#F4E06D', '#C499BA', '#2E0249']
+    const types = ['MP3','MP4','WEBM', 'M4A', 'AVI','3GP']
+
     const buttons = []
 
 
@@ -72,7 +72,7 @@ const createTypeButtons = () => {
 }
 
 const download = (value) => {
-    console.log(value.length)
+
     var loader = `
     <div class="loader"></div>
     `
@@ -118,7 +118,7 @@ const getVideoData = (value) => {
         .then(res => res.text())
         .then(res => {
             var parsedResponse = JSON.parse(res)
-            console.log(parsedResponse)
+            
             var authorArr = parsedResponse.author_url.split('/')
             var author = authorArr[authorArr.length - 1]
             var videoInfoElement = `
@@ -159,9 +159,6 @@ const getVideoData = (value) => {
 
 }
 
-window.onbeforeunload = function (e) {
-    console.log('sa')
-}
 
 window.onload = function (e) {
     createTypeButtons()
